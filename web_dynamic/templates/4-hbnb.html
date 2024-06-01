@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Added cache_id to prevent caching issues -->
+    <link rel="stylesheet" type="text/css" href="../static/styles/4-common.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-header.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/3-footer.css?{{ cache_id }}">
+    <link rel="stylesheet" type="text/css" href="../static/styles/6-filters.css?{{ cache_id }}">
+    <link type="text/css" rel="stylesheet" href="../static/styles/8-places.css?{{ cache_id }}">
+    <link rel="icon" href="../static/images/icon.png?{{ cache_id }}" />
+     <!-- /////////////////  Import JQuery    /////////////////-->
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <!-- ///////////// Import 4-hbnb.js  ////////////////// -->
+     <script src="../static/scripts/4-hbnb.js?{{ cache_id }}"></script>
+     <title>HBnB</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+      <div id="api_status"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+        <div class="locations">
+          <h3>States</h3>
+          <h4>&nbsp;</h4>
+          <div class="popover">
+            <ul>
+              <!-- Hardcoded state and city data for testing -->
+              <!-- BEGIN HARDCODED STATE AND CITY DATA -->
+              
+              <li>
+                <h2>California:</h2>
+                <ul>
+                  <li>San Francisco</li>
+                  <li>Los Angeles</li>
+                </ul>
+              </li>
+              <li>
+                <h2>New York:</h2>
+                <ul>
+                  <li>New York City</li>
+                  <li>Buffalo</li>
+                </ul>
+              </li>
+            
+              <!-- END HARDCODED STATE AND CITY DATA -->
+              <!-- Dynamic state and city data -->
+              {% for state in states %}
+              <li>
+                <h2>{{ state[0].name }}:</h2>
+                <ul>
+                  {% for city in state[1] %}
+                  <li>{{ city.name }}</li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="amenities">
+          <h3>Amenities</h3>
+          <h4>&nbsp;</h4>
+          <div class="popover">
+            <ul>
+              <!-- Hardcoded amenity data for testing -->
+              <!-- BEGIN HARDCODED AMENITY DATA -->
+              <li><input type="checkbox" data-id="1" data-name="WiFi" style="position: relative; left: -10px;">WiFi</li>
+              <li><input type="checkbox" data-id="2" data-name="Pool" style="position: relative; left: -10px;">Pool</li>
+              <li><input type="checkbox" data-id="3" data-name="Parking" style="position: relative; left: -10px;">Parking</li>
+              <!-- END HARDCODED AMENITY DATA -->
+          
+              <!-- Dynamic amenity data -->
+              {% for amenity in amenities %}
+              <li>
+                  <input type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}" style="position: relative; left: -10px;">
+                  {{ amenity.name }}
+              </li>
+              {% endfor %}
+          </ul>
+          
+          </div>
+        </div>
+        <button type="button">Search</button>
+      </section>
+      <div class="placesh1"><h1>Places</h1></div>
+      <section class="places">
+        <!-- Hardcoded place data for testing -->
+        <!-- BEGIN HARDCODED PLACE DATA -->
+        
+        <article>
+          <div class="title_box">
+            <h2>Beautiful Apartment</h2>
+            <div class="price_by_night">$120</div>
+          </div>
+          <div class="information">
+            <div class="max_guest">4 Guests</div>
+            <div class="number_rooms">2 Bedrooms</div>
+            <div class="number_bathrooms">2 Bathrooms</div>
+          </div>
+          <div class="user">
+            <b>Owner:</b> John Doe
+          </div>
+          <div class="description">
+            A beautiful apartment in the city center.
+          </div>
+        </article>
+        <article>
+          <div class="title_box">
+            <h2>Cozy Cottage</h2>
+            <div class="price_by_night">$80</div>
+          </div>
+          <div class="information">
+            <div class="max_guest">2 Guests</div>
+            <div class="number_rooms">1 Bedroom</div>
+            <div class="number_bathrooms">1 Bathroom</div>
+          </div>
+          <div class="user">
+            <b>Owner:</b> Jane Smith
+          </div>
+          <div class="description">
+            A cozy cottage perfect for a weekend getaway.
+          </div>
+        </article>
+       
+        <!-- END HARDCODED PLACE DATA -->
+        <!-- Dynamic place data - Deleted all article tags -->
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
+</html>
