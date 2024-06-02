@@ -20,7 +20,7 @@ def close_db(error):
 
 
 # Replace route '/4-hbnb' with '/100-hbnb'
-@app.route('/101-hbnb', strict_slashes=False) # <-- Changing route to /101-hbnb
+@app.route('/101-hbnb', strict_slashes=False) # <-- Changing the route to /101-hbnb
 def hbnb():
     """ HBNB is alive! """
     states = storage.all(State).values()
