@@ -121,3 +121,4 @@ $('button').click(function() {
     fetchPlaces(filters);
 });
 });
+
